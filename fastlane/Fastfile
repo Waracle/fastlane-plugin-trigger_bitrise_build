@@ -1,0 +1,3 @@
+lane :test do
+  trigger_bitrise_build
+end
