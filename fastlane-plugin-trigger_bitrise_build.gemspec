@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'n.hammond@waracle.com'
 
   spec.summary       = 'Trigger a Bitrise build from Fastlane'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-trigger_bitrise_build"
+  spec.homepage      = "https://github.com/waracle/fastlane-plugin-trigger_bitrise_build"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
