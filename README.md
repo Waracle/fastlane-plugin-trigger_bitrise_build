@@ -2,6 +2,8 @@
 
 [![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-trigger_bitrise_build)
 
+[![Gem Version](https://badge.fury.io/rb/fastlane-plugin-trigger_bitrise_build.svg)](https://badge.fury.io/rb/fastlane-plugin-trigger_bitrise_build)
+
 ## Getting Started
 
 This project is a [_fastlane_](https://github.com/fastlane/fastlane) plugin. To get started with `fastlane-plugin-trigger_bitrise_build`, add it to your project by running:
