@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'fastlane/plugin/trigger_bitrise_build/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'fastlane-plugin-trigger_bitrise_build'
+  spec.name          = 'trigger_bitrise_build'
   spec.version       = Fastlane::TriggerBitriseBuild::VERSION
   spec.author        = 'Nick Hammond'
   spec.email         = 'n.hammond@waracle.com'
