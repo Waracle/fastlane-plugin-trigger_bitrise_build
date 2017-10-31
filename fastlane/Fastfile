@@ -1,3 +1,20 @@
 lane :test do
-  trigger_bitrise_build
+  # Change the app_slug to an application on bitrise
+  app_slug	= 'BITRISE APP SLUG'
+
+  # Change the api_token to the build trigger api_token from the application's code page
+  api_token	=	'BITRISE_BUILD'
+
+  # Branch to build
+  branch = 'master'
+
+  # The message to add to the build
+  commit_message = 'Testing the Fastlane Bitrise Build Trigger'
+
+  trigger_bitrise_build(
+    branch: branch,
+     app_slug: app_slug,
+     api_token: api_token,
+     commit_message: commit_message
+  )
 end

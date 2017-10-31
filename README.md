@@ -12,15 +12,14 @@ fastlane add_plugin trigger_bitrise_build
 
 ## About trigger_bitrise_build
 
-Trigger a Bitrise build from Fastlane
+Trigger a [Bitrise](https://bitrise.io) build from Fastlane
 
-**Note to author:** Add a more detailed description about this plugin here. If your plugin contains multiple actions, make sure to mention them here.
+Bitrise is a Continuous Integration and Delivery (CI/CD) Platform as a Service (PaaS) with a main focus on mobile app development (iOS, Android, Xamarin, ...).  It has the ability to programmatically trigger new builds using the [build trigger API](http://devcenter.bitrise.io/api/build-trigger/).  This fastlane plugin is simply a wrapper for the trigger API.
 
 ## Example
 
-Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
+A [bitrise](https://www.bitrise.io/users/sign_up) account is  *required*.  Once you have created an account and added an application, check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
 
-**Note to author:** Please set up a sample project to make it easy for users to explore what your plugin does. Provide everything that is necessary to try out the plugin in this project (including a sample Xcode/Android project if necessary)
 
 ## Run tests for this plugin
 
