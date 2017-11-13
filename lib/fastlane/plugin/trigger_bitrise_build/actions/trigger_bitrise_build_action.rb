@@ -8,7 +8,8 @@ module Fastlane
         api_token = params[:api_token] ||= ENV['BITRISE_API_TOKEN']
         app_title = params[:app_title] ||= ENV['BITRISE_APP_TITLE']
         git_branch = params[:git_branch] ||= ENV['BITRISE_GIT_BRANCH']
-        git_commit = params[:git_commit] ||= ENV['BITRISE_GIT_COMMIT']
+        # get the commit from either the params, the specific env var or implicitly when the branch/tag is cloned
+        git_commit = params[:git_commit] ||= ENV['BITRISE_GIT_COMMIT']||=ENV['GIT_CLONE_COMMIT_HASH']
         git_tag = params[:git_tag] ||= ENV['BITRISE_GIT_TAG']
         workflow_id = params[:workflow_id] ||= ENV['BITRISE_TRIGGERED_WORKFLOW_ID']
         commit_message = params[:commit_message] ||= ENV['BITRISE_GIT_MESSAGE']
