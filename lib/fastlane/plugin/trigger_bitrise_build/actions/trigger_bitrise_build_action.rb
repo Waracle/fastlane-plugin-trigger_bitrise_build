@@ -4,10 +4,22 @@ module Fastlane
       def self.run(params)
         UI.message("The trigger_bitrise_build plugin is working!")
 
+        # {
+        #   "commit_hash": "714304e62b4d",
+        #   "commit_message": "Feature/PER-493 Encrypt CoreData database\n\n* Added encrypted SQLite stack for core data, encrypt database by hardcoded passcode\r\n\r\n* CoreData database encryption based on user pin and unique device identifier",
+        #   "branch": "feature/PER-493_insecure-storage-of-sensitive-data",
+        #   "branch_dest": "master",
+        #   "pull_request_id": 33,
+        #   "pull_request_repository_url": "git@bitbucket.org:waracle/virtualboardroom-alpine-ios.git"
+        # }
+
         app_slug = params[:app_slug] ||= ENV['BITRISE_APP_SLUG']
         api_token = params[:api_token] ||= ENV['BITRISE_API_TOKEN']
         app_title = params[:app_title] ||= ENV['BITRISE_APP_TITLE']
         git_branch = params[:git_branch] ||= ENV['BITRISE_GIT_BRANCH']
+        git_branch_dest = params[:git_branch_dest] ||= ENV['BITRISEIO_GIT_BRANCH_DEST']
+        pull_request_id = params[:pull_request_id] ||= ENV['PULL_REQUEST_ID']
+        pull_request_repository_url = params[:pull_request_repository_url]||=ENV['BITRISEIO_PULL_REQUEST_REPOSITORY_URL']
         # get the commit from either the params, the specific env var or implicitly when the branch/tag is cloned
         git_commit = params[:git_commit] ||= ENV['BITRISE_GIT_COMMIT']||=ENV['GIT_CLONE_COMMIT_HASH']
         git_tag = params[:git_tag] ||= ENV['BITRISE_GIT_TAG']
@@ -34,7 +46,10 @@ module Fastlane
             workflow_id: workflow_id,
             tag: git_tag,
             commit_message: commit_message,
-            environments: parameters
+            environments: parameters,
+            branch_dest: git_branch_dest,
+            pull_request_id: pull_request_id,
+            pull_request_repository_url: pull_request_repository_url
           },
           triggered_by: triggered_by
       }
@@ -92,6 +107,12 @@ module Fastlane
                                   optional: false,
                                       type: String),
 
+          FastlaneCore::ConfigItem.new(key: :git_branch_dest,
+                                  env_name: "BITRISEIO_GIT_BRANCH_DEST",
+                               description: "The destination branch of the repo to build",
+                                  optional: true,
+                                      type: String),
+
           FastlaneCore::ConfigItem.new(key: :git_commit,
                                   env_name: "BITRISE_GIT_COMMIT",
                                description: "The commit hash of the repo to build",
@@ -101,6 +122,18 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :git_tag,
                                   env_name: "BITRISE_GIT_TAG",
                                description: "The tag of the repo to build",
+                                  optional: true,
+                                      type: String),
+
+          FastlaneCore::ConfigItem.new(key: :pull_request_id,
+                                  env_name: "PULL_REQUEST_ID",
+                               description: "The pull request ID to build",
+                                  optional: true,
+                                      type: Integer),
+
+          FastlaneCore::ConfigItem.new(key: :pull_request_repository_url,
+                                  env_name: "BITRISEIO_PULL_REQUEST_REPOSITORY_URL",
+                               description: "The pull request repository url to build from",
                                   optional: true,
                                       type: String),
 
