@@ -116,7 +116,7 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :git_commit,
                                   env_name: "BITRISE_GIT_COMMIT",
                                description: "The commit hash of the repo to build",
-                                  optional: false,
+                                  optional: true,
                                       type: String),
 
           FastlaneCore::ConfigItem.new(key: :git_tag,
